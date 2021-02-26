@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOAL 1</title>
+</head>
+<body>
+    <!-- TAMPILAN -->
+    <hr>
+    <h1>Masukkan Kata:</h1>
+    
+    <input type="text" id="inputkata" placeholder="Masukan Kata">
+    <br><br>
+    <input type="button" value="HITUNG VOKAL" id="hitungvokal">
+    <input type="button" value="HURUF VOKAL" id="hurufvokal">
+    <input type="button" value="TANPA VOKAL" id="tanpavokal">
+
+    <h3 id="result">
+
+    </h3>
+    <hr>
+</body>
+
+<script>
+
+    // FUNGSI HITUNG VOKAL
+    let getTombolHitungVokal = document.getElementById("hitungvokal")
+    getTombolHitungVokal.addEventListener('click', hitungVokal)
+
+    function hitungVokal(){
+    let input1 = document.getElementById("inputkata").value
+    let vokal = "aiueo"
+    let hitungVokal = 0
+
+    for(let i=0; i<input1.length; i++){
+        for(let j=0; j<vokal.length; j++){
+            if(input1[i] == vokal[j]){
+                hitungVokal +=1
+            }
+        }
+    }
+    // return hitungVokal
+    document.getElementById("result").innerHTML = `ada ${hitungVokal} huruf vokal`
+    
+    }
+
+
+    // FUNGSI HURUF VOKAL
+    let getTombolHurufVokal = document.getElementById("hurufvokal")
+    getTombolHurufVokal.addEventListener('click', hurufVokal)
+
+    function hurufVokal(){
+    let input2 = document.getElementById("inputkata").value
+    let vokal = "aiueo"
+    let hurufVokal = []
+    let output = hurufVokal.join(',')
+
+    for(let i=0; i<input2.length; i++){
+        for(let j=0; j<vokal.length; j++){
+            if(input2[i] == vokal[j]){
+                hurufVokal.push(input2[i])
+            }
+        }
+    }
+    // return output
+    document.getElementById("result").innerHTML = output
+    }
+
+    // FUNGSI HURUF TANPA VOKAL
+    let getTombolHurufTanpaVokal = document.getElementById("tanpavokal")
+    getTombolHurufTanpaVokal.addEventListener('click', hurufTanpaVokal)
+
+    function hurufTanpaVokal(input){
+    let input3 = document.getElementById("inputkata").value
+    let nonVokal = "bcdfghjklmnpqrstvwxyz"
+    let hurufTanpaVokal = []
+    let output = hurufTanpaVokal.join(',')
+
+    for(let i=0; i<input3.length; i++){
+        for(let j=0; j<nonVokal.length; j++){
+            if(input3[i] == nonVokal[j]){
+                hurufTanpaVokal.push(input3[i])
+            }
+        }
+    }
+    // return output
+    document.getElementById("result").innerHTML = output
+    }
+
+</script>
+</html>
